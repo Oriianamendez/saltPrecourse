@@ -1,5 +1,11 @@
 function greet(namePassedIn) {
-  return "Welcome to SALT, " + namePassedIn;
+  if ((greet = namePassedIn)) {
+    return "Welcome to SALT, " + namePassedIn;
+  } else if ((greet = namePassedIn + namePassedIn)) {
+    return "Welcome to SALT, " + namePassedIn + " and " + namePassedIn;
+  } else {
+    return "Welcome to SALT, ";
+  }
 }
 
 module.exports.greet = greet;
