@@ -1,3 +1,1 @@
-const getAge = (birthYear, currentYear) => currentYear - birthYear;
-
-module.exports.getAge = getAge;
+export const getAge = (birthYear, currentYear) => currentYear - birthYear;
