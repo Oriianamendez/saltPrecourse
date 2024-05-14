@@ -27,6 +27,14 @@ describe("age calculator", () => {
   });
 });
 describe("age classifier", () => {
+  it("Less than 0 years your in a belly or do not exist", () => {
+    // arrange
+    // act
+    const result = getAgeGroup(-2);
+
+    // assert
+    assert.equal(result, "notExist");
+  });
   it("0-3 years old should be a toddler", () => {
     // arrange
     // act
