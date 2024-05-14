@@ -60,7 +60,7 @@ describe("age classifier", () => {
   it("20-39 years old should be a adult", () => {
     // arrange
     // act
-    const result = getAgeGroup(20);
+    const result = getAgeGroup(38);
 
     // assert
     assert.equal(result, "adult");
@@ -68,9 +68,17 @@ describe("age classifier", () => {
   it("above 39 years old ... you are just old", () => {
     // arrange
     // act
-    const result = getAgeGroup(39);
+    const result = getAgeGroup(40);
 
     // assert
     assert.equal(result, "old");
+  });
+  it("But 50 - that is prime age, my friend. PRIME. AGE.", () => {
+    // arrange
+    // act
+    const result = getAgeGroup(50);
+
+    // assert
+    assert.equal(result, "prime");
   });
 });
