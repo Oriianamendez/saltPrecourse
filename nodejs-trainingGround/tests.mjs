@@ -20,6 +20,18 @@ describe("age calculator", () => {
 
     assert.equal(result, 1);
   });
+  it("calling getAge for each age", () => {
+    const currentYear = 2024;
+    const birthYears = [1972, 2024, 1980, 1994];
+
+    for (let i = 0; i < birthYears.length; i++) {
+      const age = getAge(birthYears[i], currentYear);
+
+      console.log(
+        `If you were born in ${birthYears[i]} you are ${age} in ${currentYear}`
+      );
+    }
+  });
 });
 
 describe("age classifier", () => {
