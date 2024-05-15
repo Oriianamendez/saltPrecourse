@@ -158,6 +158,34 @@ describe("array keep values", () => {
     assert.equal(names.length, 3);
     assert.equal(names[3], undefined);
   });
+  it("removing elements from array using splice", () => {
+    const names = ["Marcus", "Eliza", "Obaid", "Arvid"];
+    assert.equal(names.length, 4);
+
+    names.splice(0, 1);
+
+    assert.equal(names.length, 3);
+    assert.equal(names[0], "Eliza");
+  });
+  it("adding elements to an immutable array", () => {
+    const names = ["Marcus", "Eliza", "Obaid"];
+    assert.equal(names.length, 3);
+
+    const newNames = [...names, "Arvid"];
+
+    assert.equal(names.length, 3);
+    assert.equal(newNames.length, 4);
+  });
+  it("filter an array - mutable", () => {
+    const numbers = [10, 23, 1, 33, 8, 12];
+
+    for (let i = 0; i < numbers.length; i++) {
+      if (numbers[i] > 10) {
+        numbers.splice(i, 1);
+      }
+    }
+    assert.equal(numbers.length, 3);
+  });
 });
 describe("loops does things over and over", () => {
   it("while-loops just keeps going unless we stop them", () => {
