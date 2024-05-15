@@ -129,3 +129,16 @@ describe("array keep values", () => {
     assert.equal(length, 3);
   });
 });
+describe("loops does things over and over", () => {
+  it("while-loops just keeps going unless we stop them", () => {
+    // arrange
+    let counter = 0;
+
+    // act
+    while (counter < 2) {
+      console.log(`Counter is now '${counter}'`);
+
+      counter = counter + 1;
+    }
+  });
+});
