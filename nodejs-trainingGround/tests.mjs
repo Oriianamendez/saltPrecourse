@@ -13,6 +13,17 @@ describe("age calculator", () => {
     const age = getAgeForPerson(person, currentYear);
     assert.equal(age, 30);
   });
+  it("a person has a list of favorite movies", () => {
+    const person = {
+      name: "Oriana",
+      favoriteMovies: ["Letters to juliet", "Encanto", "Coco", "Inside out"],
+    };
+    assert.equal(person.favoriteMovies.length, 4);
+    assert.equal(person.favoriteMovies[0], "Letters to juliet");
+    assert.equal(person.favoriteMovies[1], "Encanto");
+    assert.equal(person.favoriteMovies[2], "Coco");
+    assert.equal(person.favoriteMovies[3], "Inside out");
+  });
   it("someone born 1972 is 50 2022", () => {
     // arrange
     // act
