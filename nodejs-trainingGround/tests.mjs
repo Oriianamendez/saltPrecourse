@@ -179,12 +179,9 @@ describe("array keep values", () => {
   it("filter an array - mutable", () => {
     const numbers = [10, 23, 1, 33, 8, 12];
 
-    for (let i = 0; i < numbers.length; i++) {
-      if (numbers[i] > 10) {
-        numbers.splice(i, 1);
-      }
-    }
-    assert.equal(numbers.length, 3);
+    const lowNumbers = numbers.filter((x) => x > 10);
+
+    assert.equal(lowNumbers.length, 3);
   });
 });
 describe("loops does things over and over", () => {
