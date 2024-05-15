@@ -141,4 +141,15 @@ describe("loops does things over and over", () => {
       counter = counter + 1;
     }
   });
+  it("loop through an array with while", () => {
+    let index = 0;
+    const names = ["Marcus", "Eliza", "Obaid"];
+
+    while (index < names.length) {
+      console.log(`Index is now '${index}'`);
+      console.log(`Current element is '${names[index]}'`);
+
+      index = index + 1;
+    }
+  });
 });
