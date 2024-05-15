@@ -152,4 +152,12 @@ describe("loops does things over and over", () => {
       index = index + 1;
     }
   });
+  it("loop through an array with for", () => {
+    const names = ["Marcus", "Eliza", "Obaid"];
+
+    for (let i = 0; i < names.length; i++) {
+      console.log(`i is now '${i}'`);
+      console.log(`Current element is '${names[i]}'`);
+    }
+  });
 });
