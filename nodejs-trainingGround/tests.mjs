@@ -104,3 +104,28 @@ describe("constants and variables", () => {
     isCatAlive = peekIntoTheBox();
   });
 });
+describe("array keep values", () => {
+  it("array keep values", () => {
+    // arrange
+    const array1 = [1, 2, 3, 4];
+    const array2 = ["Marcus", "Eliza", "Obaid"];
+    const array3 = ["Marcus", 49, true];
+  });
+  it("getting elements out of arrays", () => {
+    // arrange
+    const names = ["Marcus", "Eliza", "Obaid"];
+
+    // act
+    const firstElement = names[0];
+    const secondElement = names[1];
+
+    const length = names.length;
+    const lastElement = names[names.length - 1];
+
+    // assert
+    assert.equal(firstElement, "Marcus");
+    assert.equal(secondElement, "Eliza");
+    assert.equal(lastElement, "Obaid");
+    assert.equal(length, 3);
+  });
+});
