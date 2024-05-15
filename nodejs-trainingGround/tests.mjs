@@ -140,6 +140,24 @@ describe("array keep values", () => {
     assert.equal(lastElement, "Obaid");
     assert.equal(length, 3);
   });
+  it("adding elements to array with push", () => {
+    const names = ["Marcus", "Eliza", "Obaid"];
+    assert.equal(names.length, 3);
+
+    names.push("Arvid");
+
+    assert.equal(names.length, 4);
+    assert.equal(names[3], "Arvid");
+  });
+  it("removing elements from array with pop", () => {
+    const names = ["Marcus", "Eliza", "Obaid", "Arvid"];
+    assert.equal(names.length, 4);
+
+    names.pop();
+
+    assert.equal(names.length, 3);
+    assert.equal(names[3], undefined);
+  });
 });
 describe("loops does things over and over", () => {
   it("while-loops just keeps going unless we stop them", () => {
