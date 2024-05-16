@@ -20,4 +20,18 @@ describe("ts tests", () => {
     assert.strictEqual(is35Old, true);
     assert.strictEqual(is36Old, true);
   });
+  it("fun with variables", () => {
+    let name: string = "Oriana";
+    let nameImplicit = "Oriana";
+    let nameImplicit2 = name;
+
+    const cool: boolean = true;
+    const birthYear = 1994;
+
+    assert.strictEqual(typeof cool, "boolean");
+    assert.strictEqual(typeof birthYear, "number");
+    assert.strictEqual(typeof name, "string");
+    assert.strictEqual(typeof nameImplicit, "string");
+    assert.strictEqual(typeof nameImplicit2, "string");
+  });
 });
