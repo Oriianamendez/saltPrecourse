@@ -1,5 +1,12 @@
 import assert, { notEqual } from "assert";
-import { getAgeForPerson, getAge, getAgeGroup, divide } from "./index.mjs";
+import {
+  getAgeForPerson,
+  getAge,
+  getAgeGroup,
+  divide,
+  addWithLog,
+} from "./index.mjs";
+import { log } from "console";
 
 describe("age calculator", () => {
   it("get age for person", () => {
@@ -266,5 +273,15 @@ describe("division", () => {
         "Please... No division by zero... I cannot cope with that. /Your computer"
       );
     }
+  });
+});
+describe("callbacks", () => {
+  it("adding with logger", () => {
+    const logThis2 = (message) => {
+      console.log(message);
+    };
+    const result = addWithLog(1, 89, logThis2);
+
+    assert.equal(result, 90);
   });
 });
