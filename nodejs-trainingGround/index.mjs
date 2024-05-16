@@ -13,3 +13,11 @@ export const getAgeGroup = (age) => {
 
   return "old";
 };
+export const divide = (number1, number2) => {
+  if (number2 === 0) {
+    throw new Error(
+      "Please... No division by zero... I cannot cope with that. /Your computer"
+    );
+  }
+  return number1 / number2;
+};

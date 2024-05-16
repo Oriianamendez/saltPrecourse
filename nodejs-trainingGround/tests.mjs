@@ -1,5 +1,5 @@
-import assert from "assert";
-import { getAgeForPerson, getAge, getAgeGroup } from "./index.mjs";
+import assert, { notEqual } from "assert";
+import { getAgeForPerson, getAge, getAgeGroup, divide } from "./index.mjs";
 
 describe("age calculator", () => {
   it("get age for person", () => {
@@ -249,5 +249,22 @@ describe("object are for building things", () => {
     assert.equal(person.name, "Marcus");
     assert.equal(person.birthYear, 1972);
     assert.equal(person.isTeacher, true);
+  });
+});
+describe("division", () => {
+  it("4 divided by 2 is 2", () => {
+    const result = (4, 2);
+    assert.equal(result, 2);
+  });
+  it("4 divided by 0 should throw error", () => {
+    try {
+      const result = divide(4, 0);
+    } catch (error) {
+      assert, notEqual(error, undefined);
+      assert.equal(
+        error.message,
+        "Please... No division by zero... I cannot cope with that. /Your computer"
+      );
+    }
   });
 });
