@@ -277,10 +277,9 @@ describe("division", () => {
 });
 describe("callbacks", () => {
   it("adding with logger", () => {
-    const logThis2 = (message) => {
+    const result = addWithLog(1, 89, (message) => {
       console.log(message);
-    };
-    const result = addWithLog(1, 89, logThis2);
+    });
 
     assert.equal(result, 90);
   });
