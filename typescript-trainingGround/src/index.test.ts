@@ -14,6 +14,8 @@ import {
   printThis,
   optionallyAdd,
   greetPeople,
+  addToStart,
+  Wrapper,
 } from "./index";
 
 describe("ts tests", () => {
@@ -133,5 +135,47 @@ describe("ts tests", () => {
       greeting5,
       "Hello Oriana and Amin and Michelle and Miguel and Alexander and Raiza"
     );
+  });
+  it("add to list", () => {
+    const listOfPeople: IPerson[] = [{ name: "Oriana", birthYear: 1994 }];
+    const listOfAddresses: Address[] = [
+      { street: "Lavettvägen", streetNo: 23, city: "Stockholm" },
+      { street: "Skebokvarnsvägen", streetNo: 247, city: "Stockholm" },
+    ];
+
+    const numberOfPeople = addToStart<IPerson>(listOfPeople, {
+      name: "Amin",
+      birthYear: 1993,
+    });
+    const numberOfAddresses = addToStart<Address>(listOfAddresses, {
+      street: "Moldes",
+      streetNo: 2457,
+      city: "Buenos Aires",
+    });
+
+    assert.strictEqual(numberOfPeople[0].name, "Amin");
+    assert.strictEqual(numberOfAddresses[0].city, "Buenos Aires");
+  });
+  it("wrapper for addresses", () => {
+    const listOfAddresses: Address[] = [
+      { street: "Lavettvägen", streetNo: 23, city: "Stockholm" },
+      { street: "Skebokvarnsvägen", streetNo: 247, city: "Stockholm" },
+      { street: "Moldes", streetNo: 2457, city: "Buenos Aires" },
+    ];
+    const list = new Wrapper<Address>(listOfAddresses);
+
+    assert.strictEqual(list.getFirst().city, "Stockholm");
+    assert.strictEqual(list.getLast().city, "Buenos Aires");
+  });
+  it("wrapper for people", () => {
+    const listOfPeople: IPerson[] = [
+      { name: "Oriana", birthYear: 1994 },
+      { name: "Amin", birthYear: 1993 },
+      { name: "Michelle", birthYear: 1995 },
+    ];
+    const list = new Wrapper<IPerson>(listOfPeople);
+
+    assert.strictEqual(list.getFirst().name, "Oriana");
+    assert.strictEqual(list.getLast().name, "Michelle");
   });
 });

@@ -75,6 +75,25 @@ const greetPeople = (greeting: string, ...names: string[]) => {
   return `${greeting} ${names.join(" and ")}`.trim();
 };
 
+function addToStart<T>(list: T[], itemToAdd: T): T[] {
+  return [itemToAdd, ...list];
+}
+
+class Wrapper<T> {
+  private list: T[];
+
+  constructor(list: T[]) {
+    this.list = list;
+  }
+
+  public getFirst(): T {
+    return this.list[0];
+  }
+  public getLast(): T {
+    return this.list[this.list.length - 1];
+  }
+}
+
 export {
   greet,
   isOld,
@@ -86,7 +105,9 @@ export {
   PersonClass,
   EmployeeClass,
   IPerson,
+  Wrapper,
   printThis,
   optionallyAdd,
   greetPeople,
+  addToStart,
 };
