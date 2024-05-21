@@ -61,6 +61,20 @@ const printThis = (p: Person | undefined | null) => {
   return p.name;
 };
 
+const optionallyAdd = (
+  num1: number,
+  num2: number,
+  num3: number = 0,
+  num4: number = 0,
+  num5: number = 0
+) => {
+  return num1 + num2 + num3 + num4 + num5;
+};
+
+const greetPeople = (greeting: string, ...names: string[]) => {
+  return `${greeting} ${names.join(" and ")}`.trim();
+};
+
 export {
   greet,
   isOld,
@@ -73,4 +87,6 @@ export {
   EmployeeClass,
   IPerson,
   printThis,
+  optionallyAdd,
+  greetPeople,
 };

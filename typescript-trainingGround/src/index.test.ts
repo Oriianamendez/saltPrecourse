@@ -12,6 +12,8 @@ import {
   IPerson,
   getPersonNameString,
   printThis,
+  optionallyAdd,
+  greetPeople,
 } from "./index";
 
 describe("ts tests", () => {
@@ -102,5 +104,34 @@ describe("ts tests", () => {
 
     assert.strictEqual(result1, "no person supplied");
     assert.strictEqual(result2, "no person supplied");
+  });
+  it("optional parameter", () => {
+    const sum = optionallyAdd(1, 2, 3, 4, 5);
+
+    assert.strictEqual(sum, 15);
+  });
+  it("rest parameter - print names", () => {
+    const greeting1 = greetPeople("Hello");
+    const greeting2 = greetPeople("Hello", "Oriana");
+    const greeting3 = greetPeople("Hello", "Oriana", "Amin");
+    const greeting4 = greetPeople("Hello", "Oriana", "Amin", "Michelle");
+    const greeting5 = greetPeople(
+      "Hello",
+      "Oriana",
+      "Amin",
+      "Michelle",
+      "Miguel",
+      "Alexander",
+      "Raiza"
+    );
+
+    assert.strictEqual(greeting1, "Hello");
+    assert.strictEqual(greeting2, "Hello Oriana");
+    assert.strictEqual(greeting3, "Hello Oriana and Amin");
+    assert.strictEqual(greeting4, "Hello Oriana and Amin and Michelle");
+    assert.strictEqual(
+      greeting5,
+      "Hello Oriana and Amin and Michelle and Miguel and Alexander and Raiza"
+    );
   });
 });
