@@ -11,6 +11,7 @@ import {
   EmployeeClass,
   IPerson,
   getPersonNameString,
+  printThis,
 } from "./index";
 
 describe("ts tests", () => {
@@ -94,5 +95,12 @@ describe("ts tests", () => {
 
     assert.strictEqual(p1Address, "Oriana, 1994");
     assert.strictEqual(p2Address, "Amin, 1993");
+  });
+  it("uses union types to allow null", () => {
+    const result1 = printThis(undefined);
+    const result2 = printThis(null);
+
+    assert.strictEqual(result1, "no person supplied");
+    assert.strictEqual(result2, "no person supplied");
   });
 });

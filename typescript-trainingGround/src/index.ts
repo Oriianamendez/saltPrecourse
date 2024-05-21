@@ -61,6 +61,13 @@ function getPersonNameString(p: IPerson): string {
   return `${p.name}, ${p.birthYear}`;
 }
 
+function printThis(p: Person | undefined | null) {
+  if (!p) {
+    return "no person supplied";
+  }
+  return p.name;
+}
+
 export {
   greet,
   isOld,
@@ -72,4 +79,5 @@ export {
   PersonClass,
   EmployeeClass,
   IPerson,
+  printThis,
 };
