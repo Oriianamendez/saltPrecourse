@@ -1,21 +1,15 @@
-function greet(name: string, birthYear: number): string {
+const greet = (name: string, birthYear: number): string => {
   const age = new Date().getFullYear() - birthYear;
   return `Hello ${name}, you are ${age} years old`;
-}
+};
 
-function isOld(age: number) {
-  return age >= 35;
-}
-
-function countOdd(arr: number[]): number {
-  return arr.filter((num) => num % 2 !== 0).length;
-}
-
-function sumEven(arr: number[]): number {
+const isOld = (age: number) => age >= 35;
+const countOdd = (arr: number[]) => arr.filter((num) => num % 2 !== 0).length;
+const sumEven = (arr: number[]) => {
   return arr
     .filter((num) => num % 2 === 0)
     .reduce((sum, curr) => sum + curr, 0);
-}
+};
 type Address = {
   street: string;
   streetNo: number;
@@ -57,16 +51,15 @@ interface IPerson {
   birthYear: number;
 }
 
-function getPersonNameString(p: IPerson): string {
-  return `${p.name}, ${p.birthYear}`;
-}
+const getPersonNameString = (p: IPerson) =>
+  `${p.name}, ${p.birthYear.toString()}`;
 
-function printThis(p: Person | undefined | null) {
+const printThis = (p: Person | undefined | null) => {
   if (!p) {
     return "no person supplied";
   }
   return p.name;
-}
+};
 
 export {
   greet,
