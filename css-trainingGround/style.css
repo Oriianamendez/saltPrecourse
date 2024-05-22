@@ -1,0 +1,11 @@
+.positive {
+  background-color: rgb(75, 89, 244);
+  color: white;
+}
+.negative {
+  background-color: rgb(247, 216, 216);
+  color: orangered;
+}
+.huge {
+  font-size: xx-large;
+}
