@@ -15,12 +15,12 @@
     </script>
     <main>
       <div>Lorem, ipsum dolor.</div>
-      <div>Lorem ipsum dolor sit.</div>
+      <div id="companyName">Lorem ipsum dolor sit.</div>
       <div>Lorem ipsum dolor sit amet.</div>
     </main>
     <script>
-      const name = getCompanyName();
-      console.log(`salt> End of body.  Company name is ${name}`);
+      const companyName = myFunctions.getCompanyName();
+      document.getElementById("companyName").innerHTML = companyName;
     </script>
   </body>
 </html>
