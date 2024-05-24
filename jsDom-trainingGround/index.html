@@ -20,7 +20,13 @@
         main.appendChild(ulListElement);
       }
 
-      console.log(addListInMain);
+      function removeElementDivById(id) {
+        const elementChosen = document.querySelector("div#" + id);
+        if (elementChosen != undefined) {
+          elementChosen.remove();
+        }
+      }
+
       console.log(`salt> In the head.`);
     </script>
   </head>
@@ -45,6 +51,7 @@
           " ... and bold selected with query";
       }
       addListInMain(10);
+      removeElementDivById("companyName");
     </script>
   </body>
 </html>
