@@ -6,6 +6,21 @@
     <title>JS Dom</title>
     <script src="functions.js"></script>
     <script>
+      function addListInMain(numberOfListItems) {
+        const ulListElement = document.createElement("ul");
+
+        for (let i = 0; i < numberOfListItems; i++) {
+          const liContent = document.createElement("li");
+          liContent.textContent = `Item #${i + 1}`;
+
+          ulListElement.appendChild(liContent);
+        }
+
+        const main = document.querySelector("main");
+        main.appendChild(ulListElement);
+      }
+
+      console.log(addListInMain);
       console.log(`salt> In the head.`);
     </script>
   </head>
@@ -17,6 +32,7 @@
       <div name="content" class="big bold bright">Lorem, ipsum dolor.</div>
       <div class="big bold" id="companyName">Lorem ipsum dolor sit.</div>
       <div name="content" class="big">Lorem ipsum dolor sit amet.</div>
+      <ul></ul>
     </main>
     <script>
       const companyNameElement = document.querySelectorAll("#companyName");
@@ -28,6 +44,7 @@
         boldNodesQuerySelected[i].innerHTML +=
           " ... and bold selected with query";
       }
+      addListInMain(10);
     </script>
   </body>
 </html>
