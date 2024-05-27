@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .mainResult {
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        font-size: 80px;
+      }
+      .negativeResult {
+        background-color: red;
+        color: white;
+      }
+      .positiveResult {
+        background-color: green;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1 class="mainResult">1000</h1>
+      <h1 class="mainResult">-1000</h1>
+      <h1 class="mainResult">Oriana</h1>
+    </main>
+  </body>
+  <script>
+    function addStyle(element, content) {
+      const convertedNumber = Number(content);
+
+      if (Number.isNaN(convertedNumber)) {
+        return;
+      }
+      if (convertedNumber < 0) {
+        element.classList.add("negativeResult");
+        return;
+      }
+      element.classList.add("positiveResult");
+    }
+    function resultStyling() {
+      const className = document.querySelectorAll(".mainResult");
+      for (let i = 0; i < className.length; i++) {
+        const content = className[i].textContent;
+
+        addStyle(className[i], content);
+      }
+    }
+    resultStyling();
+  </script>
+</html>
