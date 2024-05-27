@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data with Fetch</title>
+    <script>
+      function getUsers(element) {
+        fetch("https://randomuser.me/api/?gender=female&results=30")
+          .then((response) => response.json())
+          .then((data) => {
+            const userList = createUserList(data.results);
+            element.appendChild(userList);
+          });
+      }
+
+      function NameInHeading(user) {
+        const userName = document.createElement("h2");
+        userName.textContent = `${user.name.title} ${user.name.first} ${user.name.last}`;
+
+        return userName;
+      }
+      function profilePicture(user) {
+        const userImage = document.createElement("img");
+        userImage.src = `${user.picture.medium}`;
+
+        return userImage;
+      }
+      function createUserList(users) {
+        const userList = document.createElement("div");
+
+        for (let i = 0; i < users.length; i++) {
+          const userDiv = document.createElement("div");
+          userDiv.appendChild(NameInHeading(users[i]));
+          userDiv.appendChild(profilePicture(users[i]));
+
+          userList.appendChild(userDiv);
+        }
+        return userList;
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const mainElement = document.querySelector("main");
+        getUsers(mainElement);
+      });
+    </script>
+  </head>
+  <body>
+    <main></main>
+  </body>
+</html>
