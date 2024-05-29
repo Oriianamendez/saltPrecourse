@@ -1,4 +1,5 @@
 const express = require("express");
+const { check, validationResult } = require("express-validator");
 const app = express();
 
 const db = [
@@ -17,7 +18,33 @@ const db = [
 ];
 
 app.use(express.json());
-app.post("/api/developers/", (req, res) => {
+
+const developerValidationRules = [
+  check("name")
+    .notEmpty()
+    .withMessage("Name is required")
+    .isString()
+    .withMessage("Name must be a string"),
+  check("email")
+    .notEmpty()
+    .withMessage("Email is required")
+    .isString()
+    .withMessage("Email must be valid"),
+  check("email")
+    .notEmpty()
+    .withMessage("City is required")
+    .isString()
+    .withMessage("City must be a string"),
+];
+
+const validate = (req, res, next) => {
+  const errors = validationResult(req);
+  return !errors.isEmpty()
+    ? res.status(400).json({ errors: errors.array() })
+    : next();
+};
+
+app.post("/api/developers/", developerValidationRules, validate, (req, res) => {
   const newDev = {
     id: db.length + 1,
     name: req.body.name,
@@ -43,10 +70,18 @@ app.delete("/api/developers/:id", (req, res) => {
   }
 });
 
-app.patch("/api/developers/:id", (req, res) => {
-  const id = parseInt(req.params.id);
-  const developer = db.find((developer) => developer.id === id);
-  if (developer) {
+app.patch(
+  "/api/developers/:id",
+  developerValidationRules,
+  validate,
+  (req, res) => {
+    const id = parseInt(req.params.id);
+    const developer = db.find((developer) => developer.id === id);
+
+    if (!developer) {
+      res.status(404).json({ message: `Developer with id ${id} not found` });
+    }
+
     developer.name =
       req.body.name !== undefined ? req.body.name : developer.name;
     developer.email =
@@ -58,10 +93,8 @@ app.patch("/api/developers/:id", (req, res) => {
       .status(200)
       .setHeader("location", `/api/developers/${developer.id}`)
       .json(developer);
-  } else {
-    res.status(404).json({ message: `Developer with id ${id} not found` });
   }
-});
+);
 
 app.get("/api/developers/:id", (req, res) => {
   const developer = db.find((developer) => developer.id == req.params.id);
